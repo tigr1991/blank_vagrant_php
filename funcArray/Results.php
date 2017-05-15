@@ -57,13 +57,13 @@ class Results
             $perB = round($b['correct'] * 100 / ($b['correct'] + $b['incorrect']), 0);
             if ($perA === $perB) {
                 if ($a['correct'] === $b['correct']) {
-                    return $a['incorrect'] > $b['incorrect'];
+                    return $a['incorrect'] < $b['incorrect'] ? -1 : 1;
                 }
-                return $a['correct'] < $b['correct'];
+                return $a['correct'] > $b['correct'] ? -1 : 1;
             }
-            return $perA < $perB;
+            return $perA > $perB ? -1 : 1;
         });
-        $all = 78;
+        $all = 79;
         $asked = 0;
         $know = 0;
         foreach ($this->detail as $func => $info) {
