@@ -25,7 +25,11 @@ while (true) {
     if ($result->isKnow($item['command'])) {
         continue;
     }
-    echo $item['en'] . PHP_EOL;
+    if (isset($item['en'])) {
+        echo $item['en'] . PHP_EOL;
+    } else {
+        echo $item['ru'] . PHP_EOL;
+    }
     $answer = fgets(STDIN);
     $answer = preg_filter("#[\t\r\n]#ui", '', $answer);
     if ($answer === 'exit') {
